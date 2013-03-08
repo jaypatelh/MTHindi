@@ -1,9 +1,8 @@
 मनमोहन	Manmohan
 सिंह	Singh
-ने	NULL/rule/ne
+ने	ne
 दावा	assertion
 किया	did
-कि	ki
 यूपीए	UPA
 राज	administration
 में	in
@@ -45,13 +44,6 @@
 इस	this
 गाने	song
 होंगी	be
-
-एक	one
-मई	May
-रिलीज़	release
-हो	ho
-रही	being
-है	is
 
 अटल	Atal
 बिहारी	Bihari
@@ -129,3 +121,9 @@
 मजदूर	workers
 संभव	possible
 नहीं	no
+
+हैं	is
+है	is
+की	ki
+कि	ki
+टूटकर	broken
