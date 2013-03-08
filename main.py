@@ -54,7 +54,7 @@ for line in e_tag: # each sentence
 	
 	# combine two proper nouns into one proper noun
 	for i, tag in enumerate(tags):
-		if tags[i] == 'NNP' and tags[i+1] == 'NNP':
+		if (tags[i] == 'NNP' and tags[i+1] == 'NNP'):
 			words[i] = words[i] + ' ' + words[i+1]
 			del words[i+1]
 			del tags[i+1]
@@ -67,6 +67,21 @@ for line in e_tag: # each sentence
 			del words[i+1]
 			del tags[i+1]
 
+	# today_NN ki_VBP date_NN in_IN
+
+	# noun followed by ki followed by noun - replace with noun's noun
+	# i.e. add apostrophe s
+	# maintain first tag (i.e. noun)
+	for i, tag in enumerate(tags):
+		if i < (len(tags)-2):
+			if tags[i] in nouns and ( words[i+1] == 'ki' or words[i+1] == 'ka') and tags[i+2] in nouns:
+				words[i] = words[i] + '\'s ' + words[i+2]
+				del words[i+2]
+				del tags[i+2]
+				del words[i+1]
+				del tags[i+1]
+		
+
 	# VBD - verb past tense, IN - preposition/subordinating conjunction
 	# when preposition follows noun, swap them
 	# when verb past tense follows noun, swap them
@@ -74,13 +89,20 @@ for line in e_tag: # each sentence
 		if tags[i] in nouns and (tags[i+1] == 'VBD' or tags[i+1] == 'IN'):
 			# swap words and tags
 			words[i], words[i+1] = words[i+1], words[i]
-			tags[i], tags[i+1] = tags[i+1], tags[i]
 			
 			# append verb to noun
 			words[i] = words[i] + ' ' + words[i+1]
 			
 			del words[i+1]
 			del tags[i+1]
+
+	#If It is a verb, and followed by a "ki" and then a noun, then "ki" becomes a "that"
+	
+	 	for i, tag in enumerate(tags):
+			if tags[i] in verbs and words[i+1] == 'ki' and tags[i+2] in nouns:
+			# swap words and tags
+				words[i+1] = 'that'
+				tags[i+1] = 'IN'		
 
 	#for i, tag in enumerate(tags):
 	#	if words[i] == 'ne':
@@ -96,20 +118,7 @@ for line in e_tag: # each sentence
 	#			del tags[j]
 
 	#			break
-
-	# today_NN ki_VBP date_NN in_IN
-
-	# noun followed by ki followed by noun - replace with noun's noun
-	# i.e. add apostrophe s
-	# maintain first tag (i.e. noun)
-	for i, tag in enumerate(tags):
-		if i < (len(tags)-2):
-			if tags[i] in nouns and words[i+1] == 'ki' and tags[i+2] in nouns:
-				words[i] = words[i] + '\'s ' + words[i+2]
-				del words[i+2]
-				del tags[i+2]
-				del words[i+1]
-				del tags[i+1]
+			
 
 	for i, tag in enumerate(tags):
 		if i < len(tags) - 3:
@@ -176,6 +185,34 @@ for line in e_tag: # each sentence
 				del tags[i+3]
 
 	#print words
+
+
+		# combine two other nouns into one other noun
+	for i, tag in enumerate(tags):
+		if (tags[i] in nouns and tags[i+1] in nouns):
+			words[i] = words[i] + ' ' + words[i+1]
+			del words[i+1]
+			del tags[i+1]
+
+
+
+	for i, tag in enumerate(tags):
+		if tags[i] in nouns and words[i+1] == 'ke' and tags[i+2] in nouns:
+			# swap words and tags
+				temp = words[i]
+				words [i] = words [i+2]
+				words[i+2] = temp
+				words [i+1] = 'to'
+				tags[i+1] = 'PRP'	
+		elif tags[i] in nouns and words[i+1] == 'ke' and tags[i+2] == 'PRP':
+			del words[i+1]
+			del tags[i+1]
+			temp = words[i+1]
+			tempTag = tags[i+1]
+			words[i+1] = words[i]
+			tags[i+1] = tags[i]
+			words[i] = temp
+			tags[i] = tempTag;	
 
 	# if VBZ (mostly 'is'/hai) comes after a verb, change the 'is' to 'has' and swap with the verb
 	# maintain first tag (i.e. the verb's tag)
