@@ -33,7 +33,7 @@
 और	and
 सड़क	road
 यातायात	communication
-बाधित	barred
+बाधित	bar
 कर	do
 दिया	give
 गया	been

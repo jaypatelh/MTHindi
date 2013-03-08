@@ -26,6 +26,17 @@ for line in h:
 
 h.close()
 
+# load present tense, past tense and past participle words from file
+p = open("participlesAndtense.txt")
+past_tenses = dict()
+past_participles = dict()
+all_lines = p.readlines()[0]
+for line in all_lines.split("\r"):
+	words = line.split("\t")
+	past_tenses[words[0].strip()] = words[1].strip()
+	past_participles[words[0].strip()] = words[2].strip()
+p.close()
+
 # write translated words to new file
 e = open("english.txt", "w")
 for sentence in sentences:
@@ -100,12 +111,79 @@ for line in e_tag: # each sentence
 				del words[i+1]
 				del tags[i+1]
 
+	for i, tag in enumerate(tags):
+		if i < len(tags) - 3:
+			# show_VB give_VBP been_VBN is_VBZ ._.
+			if tags[i] in verbs and words[i+1] == 'do' and words[i+2] == 'give' and words[i+3] == 'been' and words[i+4] == 'is':
+				print "yo"
+				# change to past tense
+				word_to_change = words[i]
+				if word_to_change in past_participles:
+					words[i] = past_participles[word_to_change]
+
+					words[i+1] = 'has been'
+					tags[i+1] = 'VBN'
+					
+					del words[i+4]
+					del words[i+3]
+					del words[i+2]
+					del tags[i+4]
+					del tags[i+3]
+					del tags[i+2]
+			elif tags[i] in verbs and words[i+1] == 'give' and words[i+2] == 'been' and words[i+3] == 'is':
+				print "yo2"
+				# change to past tense
+				word_to_change = words[i]
+				#print word_to_change
+				#print past_participles
+				if word_to_change in past_participles:
+					#print "hello"
+					words[i] = past_participles[word_to_change]
+
+					words[i+1] = 'has been'
+					tags[i+1] = 'VBN'
+					
+					del words[i+3]
+					del words[i+2]
+					del tags[i+3]
+					del tags[i+2]
+			elif words[i] in nouns and words[i+1] == 'do' and words[i+2] == 'give' and words[i+3] == 'been' and words[i+4] == 'is':
+				print "yo3"
+				# change to past tense
+				word_to_change = words[i+1]
+				if word_to_change in past_participles:
+					words[i+1] = past_participles[word_to_change]
+
+					words[i+2] = 'has been'
+					tags[i+2] = 'VBN'
+					
+					del words[i+4]
+					del words[i+3]
+					del words[i+2]
+					del tags[i+4]
+					del tags[i+3]
+					del tags[i+2]
+			elif words[i] in nouns and words[i+1] == 'give' and words[i+2] == 'been' and words[i+3] == 'is':
+				print "yo4"
+				# change to past tense
+				words[i+1] = 'given'
+				tags[i+1] = 'VBN'
+
+				words[i+2] = 'has been'
+				tags[i+2] = 'VBN'
+					
+				del words[i+3]
+				del tags[i+3]
+
+	#print words
+
 	# if VBZ (mostly 'is'/hai) comes after a verb, change the 'is' to 'has' and swap with the verb
 	# maintain first tag (i.e. the verb's tag)
 	for i, tag in enumerate(tags):
 		if i < len(tags)-1:
 			if tags[i+1] == 'VBZ' and tag in verbs:
 				if words[i+1] == 'is':
+					#print "########"
 					words[i+1] = 'has'
 
 					# swap
@@ -115,7 +193,7 @@ for line in e_tag: # each sentence
 
 					del words[i+1]
 					del tags[i+1]
-	
+
 	# RB - adverb followed by verb, swap them
 	for i, tag in enumerate(tags):
 		if tag == 'RB' and tags[i+1] == 'VBD':
@@ -141,11 +219,11 @@ for line in e_tag: # each sentence
 			del tags[i+2]
 			del tags[i+1]
 			words[i] = 'even'
-		elif words[i] == 'give' and words[i+1] == 'been' and words[i+2] == 'is':
-			del words[i+2]
-			del words[i+1]
-			del tags[i+2]
-			del tags[i+1]
-			words[i] = 'has been'
+		#elif words[i] == 'give' and words[i+1] == 'been' and words[i+2] == 'is':
+		#	del words[i+2]
+		#	del words[i+1]
+		#	del tags[i+2]
+		#	del tags[i+1]
+		#	words[i] = 'has been'
 
 	print ' '.join(words)
