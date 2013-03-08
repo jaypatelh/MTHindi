@@ -35,7 +35,6 @@ for sentence in sentences:
 nouns = ['NN', 'NNP']
 verbs = ['VB', 'VBD', 'VBG', 'VBN']
 
-"""
 e_tag = open("englishTagged.txt", "r")
 for line in e_tag: # each sentence
 	words_tags = line.split(' ')
@@ -140,8 +139,3 @@ for line in e_tag: # each sentence
 			words[i] = 'even'
 
 	print ' '.join(words)
-<<<<<<< HEAD
-
-=======
-"""
->>>>>>> b29da89f2e11c119657a6d6967565a2a28882ce3
