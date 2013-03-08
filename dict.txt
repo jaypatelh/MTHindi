@@ -1,7 +1,7 @@
 मनमोहन	Manmohan
 सिंह	Singh
 ने	ne
-दावा	assertion
+दावा	assert
 किया	did
 यूपीए	UPA
 राज	Administration
@@ -75,7 +75,7 @@
 दो	two
 ही	only
 बातें	things
-दावे	assertion
+दावे	assert
 साथ	with
 कहीं	said
 जा	go
