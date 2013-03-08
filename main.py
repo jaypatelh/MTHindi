@@ -32,7 +32,6 @@ for sentence in sentences:
 	e.write(sentence)
 	e.write(".\n")
 
-"""
 nouns = ['NN', 'NNP']
 verbs = ['VB', 'VBD', 'VBG', 'VBN']
 
@@ -101,4 +100,3 @@ for line in e_tag: # each sentence
 			words[i] = 'even'
 
 	print ' '.join(words)
-"""
