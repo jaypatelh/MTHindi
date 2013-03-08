@@ -43,7 +43,7 @@
 सिर्फ	only
 इस	this
 गाने	song
-होंगी	be
+होंगी		will be
 
 अटल	Atal
 बिहारी	Bihari
@@ -110,7 +110,7 @@
 उससे	thereby
 पहले	before
 कोई	someone
-नहीं	no
+नहीं	not
 जानता	know
 था	was
 
