@@ -44,24 +44,30 @@ for line in e_tag: # each sentence
 	# combine two proper nouns into one proper noun
 	for i, tag in enumerate(tags):
 		if tags[i] == 'NNP' and tags[i+1] == 'NNP':
-			words[i] = words[i] + " " + words[i+1]
+			words[i] = words[i] + ' ' + words[i+1]
 			del words[i+1]
 			del tags[i+1]
 
-	# 
+	# when determiner (a word that references a noun) occurs before a noun, combine them into one
 	for i, tag in enumerate(tags):
 		if tags[i] == 'DT' and tags[i+1] in nouns:
-			words[i] = words[i] + " " + words[i+1]
+			words[i] = words[i] + ' ' + words[i+1]
 			tags[i] = tags[i+1]
 			del words[i+1]
 			del tags[i+1]
 
-	# rule 2
+	# VBD - verb past tense, IN - preposition/subordinating conjunction
+	# when preposition follows noun, swap them
+	# when verb past tense follows noun, swap them
 	for i, tag in enumerate(tags):
 		if tags[i] in nouns and (tags[i+1] == 'VBD' or tags[i+1] == 'IN'):
+			# swap words and tags
 			words[i], words[i+1] = words[i+1], words[i]
 			tags[i], tags[i+1] = tags[i+1], tags[i]
+			
+			# append verb to noun
 			words[i] = words[i] + ' ' + words[i+1]
+			
 			del words[i+1]
 			del tags[i+1]
 
@@ -82,7 +88,9 @@ for line in e_tag: # each sentence
 
 	# today_NN ki_VBP date_NN in_IN
 
-	# rule 3
+	# noun followed by ki followed by noun - replace with noun's noun
+	# i.e. add apostrophe s
+	# maintain first tag (i.e. noun)
 	for i, tag in enumerate(tags):
 		if i < (len(tags)-2):
 			if tags[i] in nouns and words[i+1] == 'ki' and tags[i+2] in nouns:
@@ -92,7 +100,8 @@ for line in e_tag: # each sentence
 				del words[i+1]
 				del tags[i+1]
 
-	# rule 5
+	# if VBZ (mostly 'is'/hai) comes after a verb, change the 'is' to 'has' and swap with the verb
+	# maintain first tag (i.e. the verb's tag)
 	for i, tag in enumerate(tags):
 		if i < len(tags)-1:
 			if tags[i+1] == 'VBZ' and tag in verbs:
@@ -107,14 +116,12 @@ for line in e_tag: # each sentence
 					del words[i+1]
 					del tags[i+1]
 	
+	# RB - adverb followed by verb, swap them
 	for i, tag in enumerate(tags):
 		if tag == 'RB' and tags[i+1] == 'VBD':
-			#print words[i]
-			#print words[i+1]
 			words[i], words[i+1] = words[i+1], words[i]
 			tags[i], tags[i+1] = tags[i+1], tags[i]
-
-	# rule 6
+	"""
 	for i, tag in enumerate(tags):
 		if tags[i] in nouns and tags[i+1] in nouns and (tags[i+2] == 'VBD' or tags[i+2] == 'IN'):
 			# insert at index i-1
@@ -124,6 +131,7 @@ for line in e_tag: # each sentence
 			del tags[i+2]
 			words.insert(i, pp)
 			tags.insert(i, t)
+	"""
 
 	# rule 7
 	for i, tag in enumerate(tags):
@@ -133,5 +141,11 @@ for line in e_tag: # each sentence
 			del tags[i+2]
 			del tags[i+1]
 			words[i] = 'even'
+		elif words[i] == 'give' and words[i+1] == 'been' and words[i+2] == 'is':
+			del words[i+2]
+			del words[i+1]
+			del tags[i+2]
+			del tags[i+1]
+			words[i] = 'has been'
 
 	print ' '.join(words)
