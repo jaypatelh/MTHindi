@@ -43,7 +43,7 @@
 सिर्फ	only
 इस	this
 गाने	song
-होंगी		will be
+होंगी	will be
 
 अटल	Atal
 बिहारी	Bihari

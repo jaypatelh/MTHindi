@@ -30,8 +30,9 @@ h.close()
 e = open("english.txt", "w")
 for sentence in sentences:
 	e.write(sentence)
-	e.write("\n")
+	e.write(".\n")
 
+"""
 nouns = ['NN', 'NNP']
 verbs = ['VB', 'VBD', 'VBG', 'VBN']
 
@@ -100,3 +101,4 @@ for line in e_tag: # each sentence
 			words[i] = 'even'
 
 	print ' '.join(words)
+"""
