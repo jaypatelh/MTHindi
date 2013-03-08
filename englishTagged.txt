@@ -5,6 +5,6 @@ Atal_NNP Bihari_NNP Vajpayee_NNP its_PRP$ most_RBS superior_JJ example_NN is_VBZ
 West_NNP Bengal_NNP in_IN 42_CD seats_NNS is_VBZ and_CC today_NN ki_VBP date_NN in_IN also_RB Trinamool_NNP Congress_NNP ke_VBP near_IN 26_CD seats_NNS is_VBZ ._.
 58_CD year_NN ki_FW Mamta_FW Banerjee_FW ke_FW about_IN only_RB two_CD only_JJ things_NNS assert_VBP ke_NN with_IN said_VBD go_NN can_NN is_VBZ ._.
 Kolkata_NNP Lucknow_NNP Mumbai_NNP and_CC here_RB to_TO ki_VB Delhi_NNP in_IN also_RB people_NNS ne_FW Rahul_FW ke_FW against_IN also_RB voice_NN raised_VBD is_VBZ ._.
-explosive_JJ opener_NN ko_NN team_NN from_IN outside_JJ ka_NN road_NN show_NN give_VBP been_VBN is_VBZ ._.
+explosive_JJ opener_NN ko_NN team_NN from_IN outside_JJ ka_NN road_NN show_VB give_VBP been_VBN is_VBZ ._.
 country_NN ka_NN progress_NN without_IN workers_NNS possible_JJ not_RB is_VBZ ._.
 Sachin_NNP Tendulkar_NNP and_CC Vinod_NNP Kambli_NNP ko_VBD it_PRP before_IN anyone_NN not_RB know_VB was_VBD ._.
