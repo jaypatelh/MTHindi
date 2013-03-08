@@ -54,21 +54,43 @@ for line in e_tag: # each sentence
 			words[i] = words[i] + " " + words[i+1]
 			tags[i] = tags[i+1]
 			del words[i+1]
-			del tags[i+1]		
+			del tags[i+1]
 
 	# rule 2
 	for i, tag in enumerate(tags):
 		if tags[i] in nouns and (tags[i+1] == 'VBD' or tags[i+1] == 'IN'):
-			words[i], words[i+1] = words[i+1], words[i]
-			tags[i], tags[i+1] = tags[i+1], tags[i]
+			words[i] = words[i] + ' ' + words[i+1]
+			del words[i+1]
+			del tags[i+1]
+
+	"""
+	for i, tag in enumerate(tags):
+		if words[i] == 'ne':
+			j = i
+			while j < len(tags) and tags[j] != 'VBD':
+				print words[j]
+				j += 1
+			if j < len(tags):
+				words[i] = words[j]
+				tags[i] = tags[j]
+
+				del words[j]
+				del tags[j]
+
+				break
+	"""
+
+	# today_NN ki_VBP date_NN in_IN
 
 	# rule 3
 	for i, tag in enumerate(tags):
 		if i < (len(tags)-2):
 			if tags[i] in nouns and words[i+1] == 'ki' and tags[i+2] in nouns:
+				words[i] = words[i] + '\'s ' + words[i+2]
+				del words[i+2]
+				del tags[i+2]
 				del words[i+1]
 				del tags[i+1]
-				words[i] = words[i] + '\'s'
 
 	# rule 5
 	for i, tag in enumerate(tags):
@@ -76,8 +98,27 @@ for line in e_tag: # each sentence
 			if tags[i+1] == 'VBZ' and tag in verbs:
 				if words[i+1] == 'is':
 					words[i+1] = 'has'
+
+					# swap
 					words[i], words[i+1] = words[i+1], words[i]
-					tags[i], tags[i+1] = tags[i+1], tags[i]
+
+					words[i] = words[i] + ' ' + words[i+1]
+
+					del words[i+1]
+					del tags[i+1]
+	
+	print words
+	print tags
+	
+	for i, tag in enumerate(tags):
+		if tag == 'RB' and tags[i+1] == 'VBD':
+			#print words[i]
+			#print words[i+1]
+			words[i], words[i+1] = words[i+1], words[i]
+			tags[i], tags[i+1] = tags[i+1], tags[i]
+
+	print words
+	print tags
 
 	# rule 6
 	for i, tag in enumerate(tags):
