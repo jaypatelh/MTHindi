@@ -128,17 +128,17 @@ for line in e_tag: # each sentence
 				# change to past tense
 				word_to_change = words[i]
 				if word_to_change in past_participles:
-					words[i] = past_participles[word_to_change]
-
-					words[i+1] = 'has been'
-					tags[i+1] = 'VBN'
+					words[i] = 'has been ' + past_participles[word_to_change]
+					tags[i] = 'VB'
 					
 					del words[i+4]
 					del words[i+3]
 					del words[i+2]
+					del words[i+1]
 					del tags[i+4]
 					del tags[i+3]
 					del tags[i+2]
+					del tags[i+1]
 			elif tags[i] in verbs and words[i+1] == 'give' and words[i+2] == 'been' and words[i+3] == 'is':
 				print "yo2"
 				# change to past tense
@@ -147,24 +147,22 @@ for line in e_tag: # each sentence
 				#print past_participles
 				if word_to_change in past_participles:
 					#print "hello"
-					words[i] = past_participles[word_to_change]
-
-					words[i+1] = 'has been'
-					tags[i+1] = 'VBN'
+					words[i] = 'has been ' + past_participles[word_to_change]
+					tags[i] = 'VBN'
 					
 					del words[i+3]
 					del words[i+2]
+					del words[i+1]
 					del tags[i+3]
 					del tags[i+2]
+					del tags[i+1]
 			elif words[i] in nouns and words[i+1] == 'do' and words[i+2] == 'give' and words[i+3] == 'been' and words[i+4] == 'is':
 				print "yo3"
 				# change to past tense
 				word_to_change = words[i+1]
 				if word_to_change in past_participles:
-					words[i+1] = past_participles[word_to_change]
-
-					words[i+2] = 'has been'
-					tags[i+2] = 'VBN'
+					words[i+1] = 'has been done'
+					tags[i+1] = 'VB'
 					
 					del words[i+4]
 					del words[i+3]
@@ -175,12 +173,11 @@ for line in e_tag: # each sentence
 			elif words[i] in nouns and words[i+1] == 'give' and words[i+2] == 'been' and words[i+3] == 'is':
 				print "yo4"
 				# change to past tense
-				words[i+1] = 'given'
-				tags[i+1] = 'VBN'
+				words[i+1] = 'has been given'
+				tags[i+1] = 'VB'
 
-				words[i+2] = 'has been'
-				tags[i+2] = 'VBN'
-					
+				del words[i+2]
+				del tags[i+2]	
 				del words[i+3]
 				del tags[i+3]
 
