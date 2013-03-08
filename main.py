@@ -43,7 +43,7 @@ for sentence in sentences:
 	e.write(sentence)
 	e.write(".\n")
 
-nouns = ['NN', 'NNP']
+nouns = ['NN', 'NNP', 'NNS']
 verbs = ['VB', 'VBD', 'VBG', 'VBN']
 
 e_tag = open("englishTagged.txt", "r")
@@ -67,6 +67,16 @@ for line in e_tag: # each sentence
 			del words[i+1]
 			del tags[i+1]
 
+	for i, tag in enumerate(tags):
+		if words[i] == 'said' and words[i+1] == 'go' and words[i+2] == 'can' and words[i+3] == 'is':
+			words[i] = 'can be said'
+			del words[i+3]
+			del words[i+2]
+			del words[i+1]
+			del tags[i+3]
+			del tags[i+2]
+			del tags[i+1]	
+
 	# today_NN ki_VBP date_NN in_IN
 
 	# noun followed by ki followed by noun - replace with noun's noun
@@ -89,7 +99,7 @@ for line in e_tag: # each sentence
 		if tags[i] in nouns and (tags[i+1] == 'VBD' or tags[i+1] == 'IN'):
 			# swap words and tags
 			words[i], words[i+1] = words[i+1], words[i]
-			
+
 			# append verb to noun
 			words[i] = words[i] + ' ' + words[i+1]
 			
@@ -233,6 +243,7 @@ for line in e_tag: # each sentence
 		if tag == 'RB' and tags[i+1] == 'VBD':
 			words[i], words[i+1] = words[i+1], words[i]
 			tags[i], tags[i+1] = tags[i+1], tags[i]
+		
 	"""
 	for i, tag in enumerate(tags):
 		if tags[i] in nouns and tags[i+1] in nouns and (tags[i+2] == 'VBD' or tags[i+2] == 'IN'):
@@ -253,6 +264,7 @@ for line in e_tag: # each sentence
 			del tags[i+2]
 			del tags[i+1]
 			words[i] = 'even'
+	
 		#elif words[i] == 'give' and words[i+1] == 'been' and words[i+2] == 'is':
 		#	del words[i+2]
 		#	del words[i+1]

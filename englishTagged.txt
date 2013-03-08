@@ -1,5 +1,5 @@
 Manmohan_NNP Singh_NNP ne_NN assert_VBP did_VBD ki_FW UPA_NNP Administration_NNP in_IN poverty_NN less_RB became_VBD is_VBZ ._.
-employed_VBN teachers_NNS on_IN became_VBN stick_NN charge_NN ke_FW opposition_NN in_IN today_NN Thursday_NNP ko_NNP Bihar_NNP closed_VBD ke_RB during_IN many_JJ places_NNS on_IN trains_NNS stop_VBP di_FW been_VBN and_CC road_NN communication_NN ko_FW bar_VB do_VBP give_VB been_VBN is_VBZ ._.
+employed_VBN teachers_NNS on_IN became_VBN stick_NN charge_NN ke_FW opposition_NN in_IN today_NN Thursday_NNP ko_NNP Bihar_NNP closed_VBD ke_FW during_IN many_JJ places_NNS on_IN trains_NNS stop_VBD di_FW been_VBN and_CC road_NN communication_NN ko_FW bar_VB do_VBP give_VB been_VBN is_VBZ ._.
 film_NN in_IN Priyanka_NNP only_RB this_DT song_NN in_IN will_MD be_VB ._.
 Atal_NNP Bihari_NNP Vajpayee_NNP its_PRP$ most_RBS superior_JJ example_NN is_VBZ ._.
 West_NNP Bengal_NNP in_IN 42_CD seats_NNS is_VBZ and_CC today_NN ki_FW date_NN in_IN also_RB Trinamool_NNP Congress_NNP ke_VBP near_IN 26_CD seats_NNS is_VBZ ._.
