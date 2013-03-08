@@ -35,6 +35,7 @@ for sentence in sentences:
 nouns = ['NN', 'NNP']
 verbs = ['VB', 'VBD', 'VBG', 'VBN']
 
+"""
 e_tag = open("englishTagged.txt", "r")
 for line in e_tag: # each sentence
 	words_tags = line.split(' ')
@@ -63,22 +64,20 @@ for line in e_tag: # each sentence
 			del words[i+1]
 			del tags[i+1]
 
-	"""
-	for i, tag in enumerate(tags):
-		if words[i] == 'ne':
-			j = i
-			while j < len(tags) and tags[j] != 'VBD':
-				print words[j]
-				j += 1
-			if j < len(tags):
-				words[i] = words[j]
-				tags[i] = tags[j]
+	#for i, tag in enumerate(tags):
+	#	if words[i] == 'ne':
+	#		j = i
+	#		while j < len(tags) and tags[j] != 'VBD':
+	#			print words[j]
+	#			j += 1
+	#		if j < len(tags):
+	#			words[i] = words[j]
+	#			tags[i] = tags[j]
 
-				del words[j]
-				del tags[j]
+	#			del words[j]
+	#			del tags[j]
 
-				break
-	"""
+	#			break
 
 	# today_NN ki_VBP date_NN in_IN
 
@@ -141,3 +140,4 @@ for line in e_tag: # each sentence
 			words[i] = 'even'
 
 	print ' '.join(words)
+"""
