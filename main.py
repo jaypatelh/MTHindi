@@ -41,14 +41,14 @@ for line in e_tag: # each sentence
 	tags = [word.split('_')[1].strip() for word in words_tags]
 	words = [word.split('_')[0].strip() for word in words_tags]
 	
-	# rule 1
+	# combine two proper nouns into one proper noun
 	for i, tag in enumerate(tags):
 		if tags[i] == 'NNP' and tags[i+1] == 'NNP':
 			words[i] = words[i] + " " + words[i+1]
 			del words[i+1]
 			del tags[i+1]
 
-	# rule 1
+	# 
 	for i, tag in enumerate(tags):
 		if tags[i] == 'DT' and tags[i+1] in nouns:
 			words[i] = words[i] + " " + words[i+1]
@@ -59,6 +59,8 @@ for line in e_tag: # each sentence
 	# rule 2
 	for i, tag in enumerate(tags):
 		if tags[i] in nouns and (tags[i+1] == 'VBD' or tags[i+1] == 'IN'):
+			words[i], words[i+1] = words[i+1], words[i]
+			tags[i], tags[i+1] = tags[i+1], tags[i]
 			words[i] = words[i] + ' ' + words[i+1]
 			del words[i+1]
 			del tags[i+1]
@@ -105,18 +107,12 @@ for line in e_tag: # each sentence
 					del words[i+1]
 					del tags[i+1]
 	
-	print words
-	print tags
-	
 	for i, tag in enumerate(tags):
 		if tag == 'RB' and tags[i+1] == 'VBD':
 			#print words[i]
 			#print words[i+1]
 			words[i], words[i+1] = words[i+1], words[i]
 			tags[i], tags[i+1] = tags[i+1], tags[i]
-
-	print words
-	print tags
 
 	# rule 6
 	for i, tag in enumerate(tags):
