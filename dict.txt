@@ -14,7 +14,7 @@
 शिक्षकों	teachers
 पर	on
 हुए	became
-लाठी	bludgeon
+लाठी	stick
 चार्ज	charge
 के	ke
 विरोध	opposition
@@ -75,9 +75,9 @@
 दो	two
 ही	only
 बातें	things
-दावे	claims
+दावे	assertion
 साथ	with
-कहीं	somewhere
+कहीं	said
 जा	go
 सकती	can
 
@@ -97,9 +97,9 @@
 ओपनर	opener
 टीम	team
 से	from
-बाहरका	outsider
+बाहर	outside
 रास्ता	road
-दिखा	saw
+दिखा	show
 दिया	give
 गया	been
 
@@ -107,20 +107,20 @@
 तेंदुलकर	Tendulkar
 विनोद	Vinod
 कांबली	Kambli
-उससे	thereby
+उससे	it
 पहले	before
-कोई	someone
+कोई	anyone
 नहीं	not
 जानता	know
 था	was
 
 देश	country
-का	of
+का	ka
 विकास	progress
 बिना	without
 मजदूर	workers
 संभव	possible
-नहीं	no
+नहीं	not
 
 हैं	is
 है	is
