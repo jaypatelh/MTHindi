@@ -45,6 +45,7 @@ for sentence in sentences:
 
 nouns = ['NN', 'NNP', 'NNS']
 verbs = ['VB', 'VBD', 'VBG', 'VBN']
+rbs = ['RB' , 'RBS']
 
 e_tag = open("englishTagged.txt", "r")
 for line in e_tag: # each sentence
@@ -134,7 +135,6 @@ for line in e_tag: # each sentence
 		if i < len(tags) - 3:
 			# show_VB give_VBP been_VBN is_VBZ ._.
 			if tags[i] in verbs and words[i+1] == 'do' and words[i+2] == 'give' and words[i+3] == 'been' and words[i+4] == 'is':
-				print "yo"
 				# change to past tense
 				word_to_change = words[i]
 				if word_to_change in past_participles:
@@ -150,7 +150,7 @@ for line in e_tag: # each sentence
 					del tags[i+2]
 					del tags[i+1]
 			elif tags[i] in verbs and words[i+1] == 'give' and words[i+2] == 'been' and words[i+3] == 'is':
-				print "yo2"
+				
 				# change to past tense
 				word_to_change = words[i]
 				#print word_to_change
@@ -167,7 +167,7 @@ for line in e_tag: # each sentence
 					del tags[i+2]
 					del tags[i+1]
 			elif words[i] in nouns and words[i+1] == 'do' and words[i+2] == 'give' and words[i+3] == 'been' and words[i+4] == 'is':
-				print "yo3"
+			
 				# change to past tense
 				word_to_change = words[i+1]
 				if word_to_change in past_participles:
@@ -181,7 +181,7 @@ for line in e_tag: # each sentence
 					del tags[i+3]
 					del tags[i+2]
 			elif words[i] in nouns and words[i+1] == 'give' and words[i+2] == 'been' and words[i+3] == 'is':
-				print "yo4"
+				
 				# change to past tense
 				words[i+1] = 'has been given'
 				tags[i+1] = 'VB'
@@ -264,7 +264,12 @@ for line in e_tag: # each sentence
 			del tags[i+2]
 			del tags[i+1]
 			words[i] = 'even'
-	
+		
+	for i, tag in enumerate(tags):
+		if (tag == 'FW'):
+			del words[i]
+			del tags[i]
+
 		#elif words[i] == 'give' and words[i+1] == 'been' and words[i+2] == 'is':
 		#	del words[i+2]
 		#	del words[i+1]
