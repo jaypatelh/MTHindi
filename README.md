@@ -1,3 +1,3 @@
 MTHindi
 =======
-Translates Hindi to English
+Python script that translates Hindi to English
